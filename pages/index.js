@@ -78,7 +78,7 @@ export default function Home({ products }) {
   const categoriesNames = [...new Set(products.map((p) => p.category))];
 
   if (phrase) {
-    products = products.filter((p) => p.name.toLowerCase().includes(phrase));
+    products = products.filter((p) => p.description.toLowerCase().includes(phrase));
   }
 
   return (
