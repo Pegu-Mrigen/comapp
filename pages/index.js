@@ -73,12 +73,16 @@ import Layout from "../components/Layout";
 //SERVER SIDE RENDERING
 
 export default function Home({ products }) {
-  const [phrase, setPhrase] = useState("");
+  const [phrase, setPhrase] = useState([]);
 
   const categoriesNames = [...new Set(products.map((p) => p.category))];
 
   if (phrase) {
-    products = products.filter((p) => p.description.toLowerCase().includes(phrase));
+    products = products.filter(
+      (p) =>
+        p.description.toLowerCase().includes(phrase.toLowerCase()) ||
+        p.name.toLowerCase().includes(phrase.toLowerCase())
+    );
   }
 
   return (
